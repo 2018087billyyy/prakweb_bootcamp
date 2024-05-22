@@ -31,14 +31,13 @@
         <span></span>
       </label>
 
-      <div class="button">
-        <span class="btn">
-          <p>Masuk</p>
-        </span>
-        <span class="btn">
-          <p>Daftar</p>
-        </span>
-      </div>
+      <a href="logout.php">
+    <div class="button">
+      <span class="btn">
+        <p>Logout</p>
+      </span>
+    </div>
+    </a>
     </nav>
 
     <div class="dropdown" id="dropdown">
@@ -69,40 +68,25 @@
       <div class="card-content">
         <div class="card">
           <div class="entry-box">
-            <form action="">
+            <form action="./transaction-proses.php" method="post">
               <div class="user-box">
                 <label for="">Nama</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="nama" id="" />
               </div>
-              <p>Course</p>
-              <div class="select" tabindex="1">
-                <input
-                  class="selectopt"
-                  name="test"
-                  type="radio"
-                  id="opt1"
-                  checked
-                />
-                <label for="opt1" class="option">Front End Developer</label>
-                <input class="selectopt" name="test" type="radio" id="opt2" />
-                <label for="opt2" class="option">Front End Engineer</label>
-                <input class="selectopt" name="test" type="radio" id="opt3" />
-                <label for="opt3" class="option">Web Designer</label>
-                <input class="selectopt" name="test" type="radio" id="opt4" />
-                <label for="opt4" class="option">Front End Testing</label>
-                <input class="selectopt" name="test" type="radio" id="opt5" />
-                <label for="opt5" class="option">Watermelon</label>
+              <div class="user-box">
+                <label for="">Course</label>
+                <input type="text" name="category" id="" />
               </div>
 
               <div class="user-box">
                 <label for="">Harga</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="harga" id="" />
               </div>
-              <div class="user-box">
+              <!-- <div class="user-box">
                 <label for="">Status</label>
                 <input type="text" name="" id="" />
-              </div>
-              <button>kirim</button>
+              </div> -->
+              <button name="simpan" type="submit">kirim</button>
             </form>
           </div>
         </div>

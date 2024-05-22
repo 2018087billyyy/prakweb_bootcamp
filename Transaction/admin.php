@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['username'])) {
+    header('location: login.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,14 +13,15 @@ session_start();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=\, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="Style/admin.css" />
+  <link rel="stylesheet" href="../Style/admin.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+<h1>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
   <nav>
     <span class="logo">
-      <img src="assets/code.png" width="38px" />
+      <img src="../assets/code.png" width="38px" />
       <p>Chocoding</p>
     </span>
     <ul>
@@ -36,13 +41,17 @@ session_start();
       <span></span>
       <span></span>
     </label>
-    <a href="logout.php">
+    <a href="../logout.php">
     <div class="button">
       <span class="btn">
         <p>Logout</p>
       </span>
     </div>
+    </a>
   </nav>
+
+
+
 
   <div class="dropdown" id="dropdown">
     <ul>
@@ -62,13 +71,6 @@ session_start();
     </ul>
   </div>
   <?php
-
-
-  if (!isset($_SESSION['user'])) {
-    header("Location: login.php"); // Jika tidak ada session user, arahkan kembali ke login
-    exit();
-  }
-  echo "<h1>Welcome, " . $_SESSION['user'] . "!</h1>";
   ?>
 
   <div class="container">
@@ -97,48 +99,42 @@ session_start();
             <th>Nama</th>
             <th>Course</th>
             <th>Price</th>
-            <th>Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td scope="row">Billy</td>
-            <td>Front End Developer</td>
-            <td>Rp 3.000.000</td>
-            <td>Pending</td>
-            <td>
-              <div class="icon-table">
-                <i class="fa-solid fa-lg fa-trash-can" style="color: #d70909" onclick="Delete()"></i>
-                <i class="fa-regular fa-lg fa-pen-to-square" style="color: #17dc09"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">Rizky</td>
-            <td>Front End Developer</td>
-            <td>Rp 3.000.000</td>
-            <td>Pending</td>
-            <td>
-              <div class="icon-table">
-                <i class="fa-solid fa-lg fa-trash-can" style="color: #d70909"></i>
-                <i class="fa-regular fa-lg fa-pen-to-square" style="color: #17dc09"></i>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td scope="row">Niko</td>
-            <td>Front End Developer</td>
-            <td>Rp 3.000.000</td>
-            <td>Pending</td>
-            <td>
-              <div class="icon-table">
-                <i class="fa-solid fa-lg fa-trash-can" style="color: #d70909"></i>
-                <i class="fa-regular fa-lg fa-pen-to-square" style="color: #17dc09"></i>
-              </div>
-            </td>
-          </tr>
-        </tbody>
+					<?php
+					include '../koneksi.php';
+					$sql = "SELECT * FROM tb_transaction";
+					$result = mysqli_query($koneksi, $sql);
+					if (mysqli_num_rows($result) == 0) {
+						echo "
+						<tr>
+						<td colspan='5' align='center'>
+						Data Kosong
+						</td>
+			   </tr>
+				";
+					}
+					while ($data = mysqli_fetch_assoc($result)) {
+						echo "
+                    <tr>
+                      <td>$data[nama]</td>
+                      <td>$data[course]</td>
+                      <td>$data[harga]</td>
+                      <td >
+                        <a class='btn-edit' href=edit-Transaction.php?id=$data[id]>
+                               Edit
+                        </a> | 
+                        <a class='btn-delete' href=hapus-transaction.php?id=$data[id]>
+                            Hapus
+                        </a>
+                      </td>
+                    </tr>
+                  ";
+					}
+					?>
+				</tbody>
       </table>
     </div>
   </div>

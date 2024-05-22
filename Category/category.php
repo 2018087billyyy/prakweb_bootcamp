@@ -16,7 +16,7 @@
   <body>
     <nav>
       <span class="logo">
-        <img src="../assets/code.png" width="38px" />
+        <img src="./assets/code.png" width="38px" />
         <p>Chocoding</p>
       </span>
       <ul>
@@ -31,14 +31,13 @@
         <span></span>
       </label>
 
-      <div class="button">
-        <span class="btn">
-          <p>Masuk</p>
-        </span>
-        <span class="btn">
-          <p>Daftar</p>
-        </span>
-      </div>
+      <a href="logout.php">
+    <div class="button">
+      <span class="btn">
+        <p>Logout</p>
+      </span>
+    </div>
+    </a>
     </nav>
 
     <div class="dropdown" id="dropdown">
@@ -63,7 +62,7 @@
       <h2>Admin</h2>
       <div class="nav-main">
         <a href="./category.html"><p class="active">Category</p></a>
-        <a href="./admin.html"><p class="">Transaction</p></a>
+        <a href="admin.php"><p class="">Transaction</p></a>
       </div>
 
       <div class="card">
@@ -96,7 +95,7 @@
           </thead>
           <tbody>
             <tr>
-              <td scope="row">Billy</td>
+              <td scope="row">Noval</td>
               <td>Front End Developer</td>
               <td>Rp 3.000.000</td>
               <td>Pending</td>

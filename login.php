@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,7 @@
       <p style="color: red;">Invalid username or password. Please try again.</p>
       <?php endif; ?>
       
-      <form action="php/proseslogin.php" method="post">
+      <form action="proses-login.php" method="post">
         <label for="username">Username</label>
         <input type="text" name="username" id="username" required />
         <label for="password">Password</label>
@@ -28,7 +30,7 @@
           <input type="checkbox" name="remember" id="remember" />
           <label for="remember">Remember me</label>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" name="login">Login</button >
       </form>
     </div>
   </div>

@@ -8,8 +8,7 @@
   <link rel="stylesheet" href="Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 </head>
 
 <body onload="onModal()">
@@ -29,16 +28,19 @@
         <p>About Us</p>
       </a>
     </ul>
-    <a href="login.php">
-      <div class="button">
-        <span class="btn">
+
+    <div class="button">
+      <span class="btn">
+        <a href="login.php">
           <p>Masuk</p>
-        </span>
-        <span class="btn">
+        </a>
+      </span>
+      <span class="btn">
+        <a href="register.php">
           <p>Daftar</p>
-        </span>
-      </div>
-    </a>
+        </a>
+      </span>
+    </div>
   </nav>
 
   <div class="jumbotron">
@@ -263,7 +265,7 @@
   var span = document.getElementsByClassName("close")[0];
   let btnModal = document.getElementById("btnModal");
 
-  btnModal.onclick = function () {
+  btnModal.onclick = function() {
     modal.style.display = "none";
   };
 
@@ -272,13 +274,13 @@
   }
 
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function () {
+  span.onclick = function() {
     console.log("yy");
     modal.style.display = "none";
   };
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
+  window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
